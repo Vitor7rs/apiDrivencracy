@@ -16,7 +16,6 @@ export async function createChoice(req, res){
 
     try{
        const poll = await db.collection("polls").findOne({ _id: new ObjectId(pollId) });
-       console.log(poll)
         if (!poll) {
             return res.status(404).send("Enquente não existente")
         }
