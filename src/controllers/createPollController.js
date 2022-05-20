@@ -11,7 +11,7 @@ export async function createPoll(req, res){
     let {title, expireAt} = req.body
     const { error } = pollSchema.validate(req.body); 
     if (error) {return res.sendStatus(422);}
-    if(!expireAt){
+    if (!expireAt || expireAt.length === 0){
         expireAt = (dayjs().add(30, 'day').format("YYYY-MM-DD HH:mm"))
     }
 
